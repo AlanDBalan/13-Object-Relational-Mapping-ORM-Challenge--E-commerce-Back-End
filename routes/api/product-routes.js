@@ -1,10 +1,10 @@
-const router = require('express').Router();
-const { Product, Category, Tag, ProductTag } = require('../../models');
+const router = require("express").Router();
+const { Product, Category, Tag, ProductTag } = require("../../models");
 
 // The `/api/products` endpoint
 
 // get all products
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     // find all products
     // be sure to include its associated Category and Tag data
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 });
 
 // get one product
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     // find a single product by its `id`
     // be sure to include its associated Category and Tag data
@@ -27,7 +27,7 @@ router.get('/:id', async (req, res) => {
       include: [{ model: Category }, { model: Tag, through: ProductTag }],
     });
     if (!product) {
-      res.status(404).json({ message: 'Product not found with the given id' });
+      res.status(404).json({ message: "Product not found with the given id" });
       return;
     }
     res.status(200).json(product);
@@ -38,7 +38,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create new product
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     /* req.body should look like this...
       {
@@ -66,7 +66,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     // update product data
     const updatedProduct = await Product.update(req.body, {
@@ -106,10 +106,12 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     // delete one product by its `id` value
-    const deletedProduct = await Product.destroy({ where: { id: req.params.id } });
+    const deletedProduct = await Product.destroy({
+      where: { id: req.params.id },
+    });
     res.status(200).json(deletedProduct);
   } catch (err) {
     console.log(err);
