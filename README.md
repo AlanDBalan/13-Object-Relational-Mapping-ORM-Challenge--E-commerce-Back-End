@@ -85,6 +85,3 @@ Contributions to the E-Commerce Back End are welcome! If you find any issues or 
 License
 This project is licensed under the terms of the MIT License.
 
-This README provides an overview of the E-Commerce Back End application and instructions for setting up and running the application. If you have any questions or need further assistance, feel free to reach out!
-
-For a better understanding of how the project works, consider going through the code provided in the previous sections of this thread.
